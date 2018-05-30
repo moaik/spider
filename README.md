@@ -1,2 +1,0 @@
-# spider
-Spider App Data
