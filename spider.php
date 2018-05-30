@@ -2,9 +2,9 @@
 
 /**
 *	Usage:
-*	php spider.php class {if is not method default execute run() method}
+*	php spider.php class {if is not method default execute run()}
 *	php spider.php class method
-*	php spider.php class method argv1 argv2 ...
+*	php spider.php class method argv1 argv2...
 *
 */
 
@@ -31,7 +31,7 @@ if (is_array($argv) && count($argv)) {
 			break;
 	}
 } else {
-	echo 'Get cli parameters error!' . PHP_EOL;
+	echo 'get parameters error!' . PHP_EOL;
 }
 
 
