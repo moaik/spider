@@ -17,8 +17,8 @@ class GuideClass
 		echo __FUNCTION__ . PHP_EOL;
 	}
 
-	public function __call()
+	public function __call($name, $arguments)
 	{
-		echo 'method not exists!';
+		echo "{$name} method not exists!";
 	}
 }

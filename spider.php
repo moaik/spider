@@ -22,10 +22,12 @@ if (is_array($argv) && count($argv)) {
 			$object->run();
 			break;
 		case 2:
-			var_dump($argv[1] . '()');
+			$method = $argv[1];
+			call_user_func([$object, $method]);
 			break;
 		default:
-			# code...
+			$method = $argv[1];
+			call_user_func([$object, $method]);			
 			break;
 	}
 } else {
