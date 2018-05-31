@@ -2,9 +2,16 @@
 
 class TestClass
 {
+    private $a;
+
+    public function __construct()
+    {
+        $this->a = 1;
+    }
+
 	public function run()
 	{
-		echo __FUNCTION__ . PHP_EOL;
+		echo $this->a . PHP_EOL;
 	}
 
 	public function first()
