@@ -31,5 +31,6 @@ class MysqlStore
         $query = "INSERT INTO " .$table. " (" . implode(',', $columns) .") VALUES (" .implode(',', $placeholder).");";
         $statement = $this->pdo->prepare($query);
         $statement->execute($values);
+        return $this->pdo->lastInsertId();
     }
 }
