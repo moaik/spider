@@ -8,9 +8,9 @@
 *
 */
 
+// remove the first member in $argv. It's file name.
+array_shift($argv);
 if (is_array($argv) && count($argv)) {
-	// remove the first member in $argv. It's file name.
-	array_shift($argv);
 	// include class file
 	require_once(dirname(__FILE__) . '/class/' . $argv[0] . 'Class.php');
 
