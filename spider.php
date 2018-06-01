@@ -12,7 +12,7 @@
 array_shift($argv);
 if (is_array($argv) && count($argv)) {
 	// include class file
-	require_once(dirname(__FILE__) . '/class/' . $argv[0] . 'Class.php');
+	require_once(dirname(__FILE__) . '/class/' . ucwords($argv[0]) . 'Class.php');
 
 	$class = ucwords($argv[0]) . 'Class';
 	$object = new $class;
