@@ -27,6 +27,10 @@ if (is_array($argv) && count($argv)) {
 				$method = $argv[1];
 				call_user_func([$object, $method]);
 				break;
+            case 3:
+                $method = $argv[1];
+                call_user_func([$object, $method], $argv[2]);
+                break;
 			default:
 				$method = $argv[1];
 				call_user_func([$object, $method], $argv[2], $argv[3]);			
