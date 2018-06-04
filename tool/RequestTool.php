@@ -10,6 +10,7 @@ class RequestTool
             'Accept-Language:zh-Hans-CN;q=1',
             'Accept-Encoding:gzip, deflate',
             'Connection:keep-alive',
+            'X-Forwarded-For:114.248.238.236',
         ];
 
         $ch = curl_init();
