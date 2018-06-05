@@ -24,14 +24,15 @@ class RequestTool
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // execute
         $result = curl_exec($ch);
-        // close curl resource to free up system resources
-        curl_close($ch);
-        $ch = NULL;
 
         if (false === $result) {
             return curl_error($ch) . curl_errno($ch);
         }
 
+        // close curl resource to free up system resources
+        curl_close($ch);
+        $ch = NULL;
+        
         return $result;
     }
 
