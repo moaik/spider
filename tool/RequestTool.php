@@ -28,6 +28,10 @@ class RequestTool
         curl_close($ch);
         $ch = NULL;
 
+        if (false === $result) {
+            return curl_error($ch) . curl_errno($ch);
+        }
+
         return $result;
     }
 
