@@ -38,13 +38,14 @@ class RequestTool
         return $result;
     }
 
-    public function post($url)
+    public function post($url, $data)
     {
         $ch = curl_init();
         // set url
         curl_setopt($ch, CURLOPT_URL, $url);
         // set request method
         curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         // set User-Agent
         curl_setopt($ch, CURLOPT_USERAGENT, 'qMotor/5.2.12 (iPhone; iOS 11.3.1; Scale/2.00)');
         // set Header
