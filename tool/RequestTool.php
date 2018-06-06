@@ -46,8 +46,8 @@ class RequestTool
         // set request method
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        // set User-Agent
-        curl_setopt($ch, CURLOPT_USERAGENT, 'qMotor/5.2.12 (iPhone; iOS 11.3.1; Scale/2.00)');
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         // set Header
         curl_setopt($ch, CURLOPT_HTTPHEADER, self::$headers);
         // curl_exec 执行的结果不自动打印出来
