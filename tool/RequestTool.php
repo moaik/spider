@@ -24,6 +24,8 @@ class RequestTool
         curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeaders);
         // curl_exec 执行的结果不自动打印出来
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // set proxy
+        // curl_setopt($ch, CURLOPT_PROXY, '61.135.164.220:80');
         // execute
         $result = curl_exec($ch);
 
