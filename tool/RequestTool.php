@@ -4,13 +4,12 @@ class RequestTool
 {
     static $headers = [];
 
-    public function get($url)
+    public function get($url, & $httpCode)
     {
         $arrHeaders = [
             'Accept-Language:zh-Hans-CN;q=1',
             'Accept-Encoding:gzip, deflate',
             'Connection:keep-alive',
-            'X-Forwarded-For:114.248.238.236',
         ];
 
         $ch = curl_init();
@@ -22,12 +21,18 @@ class RequestTool
         curl_setopt($ch, CURLOPT_USERAGENT, 'qMotor/5.2.12 (iPhone; iOS 11.3.1; Scale/2.00)');
         // set Header
         curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeaders);
+        // set timeout
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         // curl_exec 执行的结果不自动打印出来
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // set proxy
-        // curl_setopt($ch, CURLOPT_PROXY, '61.135.164.220:80');
+        curl_setopt($ch, CURLOPT_PROXY, '221.228.17.172:8181');
+
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
         // execute
         $result = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (false === $result) {
             return curl_error($ch) . curl_errno($ch);
