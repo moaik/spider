@@ -1,1 +1,6 @@
-Redis.php
+<?php
+
+class RedisStore
+{
+
+}
