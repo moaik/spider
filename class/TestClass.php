@@ -1,31 +1,20 @@
 <?php
 
+require __DIR__ . '/../tool/ToolFactory.php';
+require __DIR__ . '/../store/StoreFactory.php';
+
 class TestClass
 {
-    private $a;
-
-    public function __construct()
-    {
-        $this->a = 1;
-    }
-
 	public function run()
 	{
-		echo $this->a . PHP_EOL;
-	}
+        $http = ToolFactory::createToolInstance('Request');
 
-	public function first()
-	{
-		echo __FUNCTION__ . PHP_EOL;
-	}
-
-	public function second($argv1, $argv2)
-	{
-		echo __FUNCTION__ . $argv1 . $argv2 . PHP_EOL;
-	}
-
-	public function __call($name, $arguments)
-	{
-		echo "{$name} method not exists!";
-	}
+        $postData = [
+            'address' => 'postmaster@appdatachart.com',
+            'subject' => 'test',
+            'body' => 'test'
+        ];
+        $result = $http->post('http://msgsender.service.moext.io/mail', $postData);
+        return $result;
+    }
 }
