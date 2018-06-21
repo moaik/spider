@@ -4,7 +4,7 @@ class RequestTool
 {
     static $headers = [];
 
-    public function get($url, & $httpCode)
+    public function get($url)
     {
         $arrHeaders = [
             'Accept-Language:zh-Hans-CN;q=1',
@@ -22,17 +22,17 @@ class RequestTool
         // set Header
         curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeaders);
         // set timeout
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
         // curl_exec 执行的结果不自动打印出来
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // set proxy
-        curl_setopt($ch, CURLOPT_PROXY, '221.228.17.172:8181');
+        // curl_setopt($ch, CURLOPT_PROXY, '114.237.64.6:52444');
 
-        curl_setopt($ch, CURLOPT_HEADER, true);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
+        // curl_setopt($ch, CURLOPT_HEADER, true);
+        // curl_setopt($ch, CURLOPT_NOBODY, true);
         // execute
         $result = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (false === $result) {
             return curl_error($ch) . curl_errno($ch);
