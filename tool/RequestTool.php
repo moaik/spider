@@ -4,7 +4,7 @@ class RequestTool
 {
     static $headers = [];
 
-    public function get($url)
+    public function get($url, $cookie)
     {
         $arrHeaders = [
             'Accept-Language:zh-Hans-CN;q=1',
@@ -21,6 +21,10 @@ class RequestTool
         curl_setopt($ch, CURLOPT_USERAGENT, 'qMotor/5.2.12 (iPhone; iOS 11.3.1; Scale/2.00)');
         // set Header
         curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeaders);
+        // set Cookie
+        if (! empty($cookie)) {
+            curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+        }
         // set timeout
         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
         // curl_exec 执行的结果不自动打印出来
