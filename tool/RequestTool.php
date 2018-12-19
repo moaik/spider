@@ -20,7 +20,7 @@ class RequestTool
         // set User-Agent
         curl_setopt($ch, CURLOPT_USERAGENT, 'qMotor/5.2.12 (iPhone; iOS 11.3.1; Scale/2.00)');
         // set Header
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeaders);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeaders);
         // set Cookie
         if (! empty($cookie)) {
             curl_setopt($ch, CURLOPT_COOKIE, $cookie);
@@ -49,7 +49,7 @@ class RequestTool
         return $result;
     }
 
-    public function post($url, $data)
+    public function post($url, $data, $isUseHeader = false)
     {
         $ch = curl_init();
         // set url
@@ -59,8 +59,10 @@ class RequestTool
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        // set Header
-        curl_setopt($ch, CURLOPT_HTTPHEADER, self::$headers);
+        if ($isUseHeader) {
+             // set Header
+            curl_setopt($ch, CURLOPT_HTTPHEADER, self::$headers);
+        }
         // curl_exec 执行的结果不自动打印出来
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // execute
