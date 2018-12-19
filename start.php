@@ -2,9 +2,9 @@
 
 /**
 *	Usage:
-*	php spider.php class {if is not method default execute run()}
-*	php spider.php class method
-*	php spider.php class method argv1 argv2...
+*	php start.php class {if is not method default execute run()}
+*	php start.php class method
+*	php start.php class method argv1 argv2...
 *
 */
 
