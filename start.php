@@ -2,7 +2,6 @@
 
 /**
 *	Usage:
-*	php start.php class {if is not method default execute run()}
 *	php start.php class method
 *	php start.php class method argv1 argv2...
 *
@@ -10,37 +9,24 @@
 
 // remove the first member in $argv. It's file name.
 array_shift($argv);
-if (is_array($argv) && count($argv)) {
+if (is_array($argv) && count($argv) > 1) {
 	// include class file
 	require_once(dirname(__FILE__) . '/class/' . ucwords($argv[0]) . 'Class.php');
-
 	$class = ucwords($argv[0]) . 'Class';
-	$object = new $class;
 
+	$object = new $class;
+	$method = $argv[1];
 	$count = count($argv);
-	if ($count < 5) {
-		switch ($count) {
-			case 1:
-				$object->run();
-				break;
-			case 2:
-				$method = $argv[1];
-				call_user_func([$object, $method]);
-				break;
-            case 3:
-                $method = $argv[1];
-                call_user_func([$object, $method], $argv[2]);
-                break;
-			default:
-				$method = $argv[1];
-				call_user_func([$object, $method], $argv[2], $argv[3]);			
-				break;
-		}
+
+	if (2 == $count) {
+		call_user_func([$object, $method]);
 	} else {
-		echo 'supports up to two parameters!' . PHP_EOL;
+		unset($argv[0]);
+		unset($argv[1]);
+		call_user_func_array([$object, $method], $argv);			
 	}
 } else {
-	echo 'get parameters error!' . PHP_EOL;
+	echo 'Missing necessary parameters!' . PHP_EOL;
 }
 
 

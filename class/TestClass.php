@@ -8,13 +8,15 @@ class TestClass
 	public function run()
 	{
         $http = ToolFactory::createToolInstance('Request');
+        $requestUrl = 'http://api.okayapi.com/?s=App.Hello.World';
+        $result = $http->get($requestUrl);
 
-        $postData = [
-            'address' => 'postmaster@appdatachart.com',
-            'subject' => 'test',
-            'body' => 'test'
-        ];
-        $result = $http->post('http://msgsender.service.moext.io/mail', $postData);
-        return $result;
+        var_dump($result);
     }
+
+    public function foo($p1, $p2, $p3)
+    {
+    	echo "The input parameters are: $p1, $p2, $p3" . PHP_EOL;
+    }
+
 }

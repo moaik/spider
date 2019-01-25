@@ -4,14 +4,8 @@ class RequestTool
 {
     static $headers = [];
 
-    public function get($url, $cookie)
+    public function get($url, $cookie = '')
     {
-        $arrHeaders = [
-            'Accept-Language:zh-Hans-CN;q=1',
-            'Accept-Encoding:gzip, deflate',
-            'Connection:keep-alive',
-        ];
-
         $ch = curl_init();
         // set url
         curl_setopt($ch, CURLOPT_URL, $url);
