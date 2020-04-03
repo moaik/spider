@@ -1,6 +1,6 @@
 <?php
 
-class RedisStore
+class Redis
 {
     private $redis;
 

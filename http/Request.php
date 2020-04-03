@@ -1,6 +1,6 @@
 <?php
 
-class RequestTool
+class Request
 {
     static $headers = [];
 

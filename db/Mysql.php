@@ -1,6 +1,6 @@
 <?php
 
-class MysqlStore
+class Mysql
 {
     public $pdo;
 
@@ -33,4 +33,19 @@ class MysqlStore
         $inserted = $statement->execute($values);
         return $inserted;
     }
+
+    public function select($sql)
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    public function update($sql) 
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+    }
+    
 }

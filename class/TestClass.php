@@ -1,17 +1,18 @@
 <?php
 
-require __DIR__ . '/../tool/ToolFactory.php';
-require __DIR__ . '/../store/StoreFactory.php';
+require __DIR__ . '/../db/DbFactory.php';
+require __DIR__ . '/../http/HttpFactory.php';
 
 class TestClass
 {
+    // php start.php test run
 	public function run()
 	{
-        $http = ToolFactory::createToolInstance('Request');
-        $requestUrl = 'http://api.okayapi.com/?s=App.Hello.World';
+        $http = HttpFactory::createToolInstance('Request');
+        $requestUrl = 'https://tool.bitefu.net/shouji/?mobile=18600364447';
         $result = $http->get($requestUrl);
 
-        var_dump($result);
+        var_dump(json_decode($result, true));
     }
 
     public function foo($p1, $p2, $p3)

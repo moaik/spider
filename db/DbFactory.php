@@ -1,6 +1,6 @@
 <?php
 
-class StoreFactory
+class DbFactory
 {
 	public static $instance = [];
 
@@ -9,9 +9,9 @@ class StoreFactory
 
 	public static function createStoreInstance($store)
 	{
-		require_once __DIR__ .'/' . ucwords($store) . 'Store.php';
+		require_once __DIR__ .'/' . ucwords($store) . '.php';
 
-		$class = ucwords($store) . 'Store';
+		$class = ucwords($store);
 		if (!in_array($store, self::$instance)) {
 			self::$instance[$store] = new $class;
 		}

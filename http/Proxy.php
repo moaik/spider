@@ -1,6 +1,6 @@
 <?php
 
-class ProxyTool
+class Proxy
 {
     public function getIp()
     {
