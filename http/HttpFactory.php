@@ -7,7 +7,7 @@ class HttpFactory
     final private function __construct(){}
     final private function __clone(){}
 
-    public static function createToolInstance($tool)
+    public static function createInstance($tool)
     {
         require_once __DIR__ .'/' . ucwords($tool) . '.php';
 

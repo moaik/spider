@@ -8,7 +8,8 @@ class TestClass
     // php start.php test run
 	public function run()
 	{
-        $http = HttpFactory::createToolInstance('Request');
+        $db = DbFactory::createInstance('Mysql');
+        $http = HttpFactory::createInstance('Request');
         $requestUrl = 'https://tool.bitefu.net/shouji/?mobile=18600364447';
         $result = $http->get($requestUrl);
 

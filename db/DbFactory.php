@@ -7,7 +7,7 @@ class DbFactory
 	final private function __construct(){}
 	final private function __clone(){}
 
-	public static function createStoreInstance($store)
+	public static function createInstance($store)
 	{
 		require_once __DIR__ .'/' . ucwords($store) . '.php';
 

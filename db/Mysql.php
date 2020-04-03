@@ -6,11 +6,13 @@ class Mysql
 
     public function __construct($options = null)
     {
+        $conf = require __DIR__ . '/../conf/db.php';
+
         try {
-            $host = 'localhost';
-            $database = 'spider';
-            $username = 'root';
-            $password = '';
+            $host = $conf['mysql']['host'];
+            $database = $conf['mysql']['database'];
+            $username = $conf['mysql']['username'];
+            $password = $conf['mysql']['password'];
             $dsn = 'mysql:host=' . $host . ';dbname=' . $database;
 
             $this->pdo = new PDO($dsn, $username, $password);
