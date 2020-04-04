@@ -9,6 +9,9 @@ class TestClass
 	public function run()
 	{
         $db = DbFactory::createInstance('Mysql');
+        $sql = "select * from profiles limit 5";
+        $data = $db->select($sql);
+        var_dump($data);
         $http = HttpFactory::createInstance('Request');
         $requestUrl = 'https://tool.bitefu.net/shouji/?mobile=18600364447';
         $result = $http->get($requestUrl);
