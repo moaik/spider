@@ -1,5 +1,6 @@
 <?php
 
+require __DIR__ . '/../lib/VCard.php';
 require __DIR__ . '/../db/DbFactory.php';
 require __DIR__ . '/../http/HttpFactory.php';
 
@@ -17,6 +18,16 @@ class TestClass
         $result = $http->get($requestUrl);
 
         var_dump(json_decode($result, true));
+    }
+
+    public function test()
+    {
+        $db = DbFactory::createInstance('Mysql');
+        $sql = "select nickname,mobile from guide_user where mobile!='' limit 10";
+        $data = $db->select($sql);
+        foreach ($data as $value) {
+            VCard::make($value['nickname'], $value['mobile']);
+        }
     }
 
     public function foo($p1, $p2, $p3)
